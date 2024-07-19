@@ -42,7 +42,7 @@ class CountryResource extends Resource
                 TextColumn::make('id', )->sortable(),
                 TextColumn::make('country_code', )->sortable()->searchable(),
                 TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('created_at')->dateTime(),
+                TextColumn::make('created_at')->dateTime()
                 // TextColumn::make('updated_at')->dateTime()
             ])
             ->filters([
