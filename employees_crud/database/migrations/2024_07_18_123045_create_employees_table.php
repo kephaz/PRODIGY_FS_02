@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('adress');
+            $table->string('address');
             $table->string('zip_code');
             $table->string('birth_date');
             $table->string('date_hired');           
