@@ -7,6 +7,10 @@ use App\Filament\Resources\DepartmentResource\RelationManagers;
 use App\Models\Department;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -23,7 +27,10 @@ class DepartmentResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()
+               ->schema([
+                   TextInput::make('name')
+               ])
             ]);
     }
 
@@ -31,7 +38,9 @@ class DepartmentResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id', )->sortable(),
+                TextColumn::make('name', )->sortable()->searchable(),
+                TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
                 //

@@ -7,6 +7,10 @@ use App\Filament\Resources\CityResource\RelationManagers;
 use App\Models\City;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -22,16 +26,24 @@ class CityResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Card::make()
+               ->schema([
+                   Select::make('state_id')
+                       ->relationship('state', 'name'),
+                   TextInput::make('name')
+               ])
+       ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id', )->sortable(),
+                TextColumn::make('name', )->sortable()->searchable(),
+                TextColumn::make('state.name')->sortable(),
+                TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
                 //
