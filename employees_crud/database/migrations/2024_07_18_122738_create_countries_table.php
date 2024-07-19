@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->char(('countary_code'));
-            $table->string('name');
+            $table->char('country_code');
+            $table->string('name'); 
+            // $table->string('updated_at');
+            // $table->string('created_at');
             $table->timestamps();
         });
     }
