@@ -5,7 +5,12 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\StateResource\Pages;
 use App\Filament\Resources\StateResource\RelationManagers;
 use App\Models\State;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RelationshipRepeater;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +28,12 @@ class StateResource extends Resource
     {
         return $form
             ->schema([
-                //
+                 Card::make()
+                    ->schema([
+                        Select::make('country_id')
+                            ->relationship('country', 'name'),
+                        TextInput::make('name')
+                    ])
             ]);
     }
 
