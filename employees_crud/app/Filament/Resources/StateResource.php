@@ -39,7 +39,7 @@ class StateResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table         
             ->columns([
                 TextColumn::make('id', )->sortable(),
                 TextColumn::make('name', )->sortable()->searchable(),
